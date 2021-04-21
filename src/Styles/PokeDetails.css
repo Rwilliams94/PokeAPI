@@ -1,0 +1,15 @@
+.poke-image {
+    width: 20vw;
+    border: 3px black solid;
+    border-radius: 50%;
+    margin-top: 10vh;
+}
+
+.databox {
+    height: 3vh;
+    width: 20vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}

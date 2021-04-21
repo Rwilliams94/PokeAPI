@@ -1,0 +1,13 @@
+.pageLinks {
+    display: flex;
+    justify-content: space-around;
+    width: 25vw;
+    height: 5vh;
+    margin: 0;
+
+}
+
+.favourite {
+    background: dodgerblue;
+    color: whitesmoke;
+}
