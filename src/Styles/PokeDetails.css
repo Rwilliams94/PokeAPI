@@ -1,15 +1,108 @@
-.poke-image {
-    width: 20vw;
-    border: 3px black solid;
-    border-radius: 50%;
-    margin-top: 10vh;
-}
+
 
 .databox {
     height: 3vh;
-    width: 20vw;
+    width: 30vw;
     display: flex;
     justify-content: space-around;
     align-items: center;
 
+}
+.hold-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 40vw;
+    height: 65vh;
+}
+
+.hold-image {
+    height: 65vh;
+    max-width: 400px;
+}
+
+.details-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 40vw;
+    height: 65vh;
+    border: 3px goldenrod solid;
+    border-radius: 12px;
+}
+
+.poke-name {    
+    height: 5vh;
+    margin: 1vh 0;
+    width: 35vw;
+}
+
+.poke-name > h1 {
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+
+.poke-image-box {
+    height: 30vh;
+    width: 35vw;
+    border: 2px black solid;
+    margin: 1vh 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+
+}
+
+.poke-image {
+    width: 20vw;
+    max-height: 190px;
+
+}
+
+.abilities-box {
+    width: 35vw;
+}
+
+.abilities-box > h3 {
+    margin: 2vh 0;
+}
+
+.abilities-table {
+    margin-top: 4vh;
+    height: 25vh;
+}
+
+.abilities-table-row {
+    border-bottom: 2px solid gray;
+    width: 35vw;
+
+}
+
+.abilities-table-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.abilities-table-title > h4 {
+    width: 10vw;
+    margin-top: 1vh;
+    font-size: 0.9rem;
+}
+
+.abilities-table-effect {
+    
+    width: 25vw;
+    padding: 0;
+    vertical-align: top;
+    
+}
+
+.abilities-table-effect > p {
+    margin-top: 1.5vh;
+    font-size: 0.7rem
 }
