@@ -2,7 +2,6 @@
     height: 10vh;
     width: 100vw;
     display: flex;
-    background: dodgerblue;
     align-items: center;
     justify-content: center;
 }
@@ -14,6 +13,8 @@
     align-items: center;
     justify-content: space-around;
     list-style: none;
-    color: whitesmoke;
+}
 
+.navList-item {
+    text-decoration: none;
 }

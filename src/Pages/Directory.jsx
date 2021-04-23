@@ -4,7 +4,7 @@ import PokeList from "../Components/PokeList";
 import "../Styles/Ditectory.css";
 
 const Directory = (props) => {
-  const [pokemon, setPokemon] = useState("ivysaur");
+  const [pokemon, setPokemon] = useState(null);
  
 
   function handleChangePokemon(pokemon) {

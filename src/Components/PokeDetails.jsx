@@ -4,6 +4,7 @@ import '../Styles/PokeDetails.css'
 
 const PokeDetails = (props) => {
 
+    
     const [pokemon, setPokemon] = useState(null);
 
     useEffect(() => {   

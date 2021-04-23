@@ -1,27 +1,67 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import NavBar from "./Components/NavBar";
 import Directory from "./Pages/Directory";
 import Settings from "./Pages/Settings";
+import UserContext from "./Components/Context/UserContext"
+import api from './API/apiHandler'
 
 function App() {
-  const [favourites, setFavourites] = useState([]);
-  const [listLimit, setListLimit] = useState(20);
+  const context = useContext(UserContext)
+  const [favourites, setFavourites] = useState(null);
+  const [listLimit, setListLimit] = useState(null);
+
+  useEffect(() => {
+    
+    api
+    .getUser()
+    .then(user => {
+      console.log(user);
+      setFavourites(user.favourites)
+      setListLimit(user.listLength)
+    })
+    
+  }, [])
+
 
   function handleChangeLimit(limit) {
-    setListLimit(limit)
+
+    const userId = context.user._id
+    api
+    .editUser(userId, limit)
+    .then(response => setListLimit(response.listLength))
+
+  }
+
+  function handleChangeTheme(theme) {
+
+    const userId = context.user._id
+    api
+    .editUser(userId, theme)
+    .then(response => setListLimit(response.listLength))
+
   }
 
   function handleAddToFavourites(pokemon) {
-    setFavourites([...favourites, pokemon]);
+    const userId = context.user._id
+    const updateName = {"name": pokemon}
+    api
+    .addPokemon(userId, updateName)
+    .then(response => setFavourites(response.favourites))
   }
 
   function handleRemoveFromFavourites(pokemon) {
-    setFavourites(favourites.filter(poke => poke !== pokemon))
+    const updateName = {"name": pokemon}
+    const userId = context.user._id
+    api
+    .removePokemon(userId, updateName)
+    .then(response => setFavourites(response.favourites))
   }
 
   console.log(listLimit);
+
+  if (favourites === null) return <div>loading...</div>
 
   return (
     <div className="App">
@@ -51,7 +91,8 @@ function App() {
               <Settings
                 {...historyProps}
                 listLimit={listLimit}
-                changeLimit={handleChangeLimit} 
+                changeLimit={handleChangeLimit}
+                changeTheme={handleChangeTheme} 
               />
             );
           }} 
