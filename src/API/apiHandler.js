@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const service = axios.create({
-    baseURL: "http://localhost:4000",
+    baseURL: process.env.REACT_APP_BACKEND_URL,
     withCredentials: true,
   });
 
@@ -19,28 +19,28 @@ export default {
 
     getUser() {
         return service
-          .get("/api")
+          .get("/api/users")
           .then((res) => res.data)
           .catch(errorHandler);
       },
 
     editUser(userId, userUpdate) {
         return service
-        .patch(`/api/update/${userId}`, userUpdate)
+        .patch(`/api/users/update/${userId}`, userUpdate)
         .then((res) => res.data)
         .catch(errorHandler);
     },
 
     addPokemon (userId, pokemonName) {
         return service
-          .patch(`/api/add/${userId}`, pokemonName)
+          .patch(`/api/users/add/${userId}`, pokemonName)
           .then((res) => res.data)
           .catch(errorHandler);
       },
 
     removePokemon(userId, pokemonName) {
     return service
-        .patch(`/api/remove/${userId}`, pokemonName)
+        .patch(`/api/users/remove/${userId}`, pokemonName)
         .then((res) => res.data)
         .catch(errorHandler);
     },

@@ -17,7 +17,6 @@ function App() {
     api
     .getUser()
     .then(user => {
-      console.log(user);
       setFavourites(user.favourites)
       setListLimit(user.listLength)
     })
@@ -59,10 +58,9 @@ function App() {
     .then(response => setFavourites(response.favourites))
   }
 
-  console.log(listLimit);
 
   if (favourites === null) return <div>loading...</div>
-
+  if (context === undefined) return <div>loading...</div>
   const darkMode = context.user.darkMode;
 
   return (
