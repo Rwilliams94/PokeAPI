@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from 'react';
+import UserContext from './Context/UserContext'
 import api from "axios";
 import withUser from "./Context/withUser";
 import "../Styles/PokeList.css";
 
 const PokeList = (props) => {
+  const context = useContext(UserContext);
   const [pokeList, setPokeList] = useState([]);
   const [offset, setOffset] = useState(0);
   const [pokeTotal, setPokeTotal] = useState(null);
@@ -32,22 +34,27 @@ const PokeList = (props) => {
   if (!pokeList) return <div>loading...</div>;
   // console.log(pokeList);
 
+  const darkMode = context.user.darkMode;
+  console.log(darkMode);
+
   return (
-    <div>
-      <h3>Total Pokemon: {pokeTotal}</h3>
+    <div className="pokelist-main">
+        <div className={`poketotal-box ${darkMode ? "dark-mode" : "light-mode"} `}>
+            <h3>Total Pokemon: {pokeTotal}</h3>
+        </div>
       <table className="pokeTable">
         <thead className="pokeTable-head" >
-          <tr>
-            <th>Pokemon name</th>
-            <th>add to favourites?</th>
+          <tr className="poke-table-row">
+            <th className="poke-table-title"><h3>Pokemon name</h3></th>
+            <th className="poke-table-title"><h3>Add to favourites?</h3></th>
           </tr>
         </thead>
         <tbody className="pokeTable-body" >
           {pokeList.map((pokemon) => (
             <tr
-              className={`pokeList-item ${
-                props.favourites.includes(pokemon.name) ? "favourite" : ""
-              }`}
+              className={`pokeList-item 
+              ${props.favourites.includes(pokemon.name) && darkMode ? "dark-mode" : ""} 
+              ${props.favourites.includes(pokemon.name) && !darkMode ? "light-mode" : ""} `}
               key={pokemon.name}
             >
               <td
@@ -60,14 +67,14 @@ const PokeList = (props) => {
               </td>
               {props.favourites.includes(pokemon.name) ? (
                 <td className="pokeList-favourite">
-                  <button onClick={() => props.removeFromFave(pokemon.name)}>
-                    remove from favourite
+                  <button className={`pokelist-button ${darkMode ? "light-mode" : "dark-mode"} `} onClick={() => props.removeFromFave(pokemon.name)}>
+                    Remove
                   </button>
                 </td>
               ) : (
-                <td>
-                  <button onClick={() => props.addToFave(pokemon.name)}>
-                    add to favourte
+                <td className="pokeList-favourite">
+                  <button className={`pokelist-button ${darkMode ? "dark-mode" : "light-mode"} `} onClick={() => props.addToFave(pokemon.name)}>
+                    Add
                   </button>
                 </td>
               )}
@@ -77,11 +84,11 @@ const PokeList = (props) => {
       </table>
 
       <div className="pageLinks">
-        <p onClick={handleMoveListPrev}>previous</p>
-        <p>
+        <p className={`pokelink-button ${darkMode ? "dark-mode" : "light-mode"} `} onClick={handleMoveListPrev}>Previous</p>
+        <p style={{color: "whitesmoke"}}>
           {offset + 1} - {Number(props.limit) + Number(offset)}
         </p>
-        <p onClick={handleMoveListNext}>next</p>
+        <p className={`pokelink-button ${darkMode ? "dark-mode" : "light-mode"} `} onClick={handleMoveListNext}>Next</p>
       </div>
     </div>
   );

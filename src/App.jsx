@@ -63,8 +63,14 @@ function App() {
 
   if (favourites === null) return <div>loading...</div>
 
+  const darkMode = context.user.darkMode;
+
   return (
-    <div className="App">
+    <div 
+      className="App"
+      style={{backgroundImage: `${darkMode ? `url("https://res.cloudinary.com/dahzswwzk/image/upload/v1619439020/dark_background_whh8ck.jpg")` : `url("https://res.cloudinary.com/dahzswwzk/image/upload/v1619439018/light_background_okqvst.jpg")` }`,
+    backgroundSize: "cover"}}
+    >
       <NavBar favourites={favourites.length} />
 
       <Switch>

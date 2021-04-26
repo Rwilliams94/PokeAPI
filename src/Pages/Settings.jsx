@@ -27,7 +27,7 @@ const Settings = (props) => {
     }
 
     function handleOnSubmit(event) {
-        event.preventDefault();
+        // event.preventDefault();
         const userChange = {"listLength": list, "darkMode": dark};
         props.changeLimit(userChange)
     }
@@ -36,19 +36,25 @@ const Settings = (props) => {
 
     if (list === null) return <div>loading</div>
 
+    const darkMode = context.user.darkMode;
+
     return (
         <div className="settingsMain">
             <div className="settingsBox">
                 <h3>Change Your Settings</h3>
                 <form className="settingsForm" onSubmit={handleOnSubmit}>
                 
-                    <label  className="settingsLabel" htmlFor="listLimit">Change the list length</label>
+                    <label  className="settingsLabel" htmlFor="listLimit"><h3>List Length: </h3>
                     <input className="settingsInput"  type="number" id="listLimit" name="listLimit" onChange={handleChangeList} defaultValue={list}/>
+                    </label>
                     
-                    <label  className="settingsLabel" htmlFor="darkMode">Dark Mode? </label>
-                    <input className="settingsInput" type="checkbox" id="darkMode" name="darkMode" onChange={handleChangeMode} checked={`${dark ? true : false}`} />
+                    <label className="settingsLabel" htmlFor="darkMode"><h3>Dark Mode?</h3></label>
+                    <label  className="switch" htmlFor="darkMode">
+                    <input className="settingsInput" type="checkbox" id="darkMode" name="darkMode" onChange={handleChangeMode} defaultChecked={darkMode} />
+                    <span className="slider"></span>
+                    </label>
 
-                    <button className="settingsButton">save</button>
+                    <button className={`settingsButton ${darkMode ? "dark-mode" : "light-mode"} `}><h3>Save</h3></button>
                 </form>
             </div>
         </div>

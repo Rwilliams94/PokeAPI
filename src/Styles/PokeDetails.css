@@ -1,13 +1,6 @@
 
 
-.databox {
-    height: 3vh;
-    width: 30vw;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
 
-}
 .hold-box {
     display: flex;
     align-items: center;
@@ -20,6 +13,7 @@
 .hold-image {
     height: 65vh;
     max-width: 400px;
+    border-radius: 20px;
 }
 
 .details-box {
@@ -28,15 +22,25 @@
     justify-content: center;
     flex-direction: column;
     width: 40vw;
+    max-width: 400px;
     height: 65vh;
     border: 3px goldenrod solid;
     border-radius: 12px;
 }
 
+.databox {
+    height: 3vh;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
 .poke-name {    
     height: 5vh;
     margin: 1vh 0;
-    width: 35vw;
+    width: 80%;
 }
 
 .poke-name > h1 {
@@ -47,7 +51,7 @@
 
 .poke-image-box {
     height: 30vh;
-    width: 35vw;
+    width: 80%;
     border: 2px black solid;
     margin: 1vh 0;
     display: flex;
@@ -58,13 +62,13 @@
 }
 
 .poke-image {
-    width: 20vw;
+    width: 50%;
     max-height: 190px;
 
 }
 
 .abilities-box {
-    width: 35vw;
+    width: 80%;
 }
 
 .abilities-box > h3 {
@@ -77,9 +81,7 @@
 }
 
 .abilities-table-row {
-    border-bottom: 2px solid gray;
-    width: 35vw;
-
+    width: 80%;
 }
 
 .abilities-table-title {
@@ -89,14 +91,14 @@
 }
 
 .abilities-table-title > h4 {
-    width: 10vw;
+    width: 90%;
     margin-top: 1vh;
     font-size: 0.9rem;
 }
 
 .abilities-table-effect {
     
-    width: 25vw;
+    width: 60%;
     padding: 0;
     vertical-align: top;
     
