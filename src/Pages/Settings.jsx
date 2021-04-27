@@ -27,14 +27,18 @@ const Settings = (props) => {
     }
 
     function handleOnSubmit(event) {
-        // event.preventDefault();
+        event.preventDefault();
         const userChange = {"listLength": list, "darkMode": dark};
         props.changeLimit(userChange)
+        window.location.reload(false)
+        props.history.push("/settings")
+
     }
 
     console.log(dark);
 
     if (list === null) return <div>loading</div>
+    if (context === undefined) return <div>loading...</div>
 
     const darkMode = context.user.darkMode;
 

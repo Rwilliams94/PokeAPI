@@ -4,6 +4,7 @@ import "./App.css";
 import NavBar from "./Components/NavBar";
 import Directory from "./Pages/Directory";
 import Settings from "./Pages/Settings";
+import Lost from './Pages/Lost';
 import UserContext from "./Components/Context/UserContext"
 import api from './API/apiHandler'
 
@@ -101,6 +102,7 @@ function App() {
             );
           }} 
           />
+        <Route path="*" component={Lost} />
       </Switch>
     </div>
   );
